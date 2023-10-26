@@ -1,0 +1,62 @@
+[gd_scene load_steps=16 format=3 uid="uid://clem18i70wdpp"]
+
+[ext_resource type="Texture2D" uid="uid://dwnufum4b7hth" path="res://assets/fx/explosion/7.png" id="1_hh65e"]
+[ext_resource type="Texture2D" uid="uid://dabedm56ep1u7" path="res://assets/buildings/turret-rocket/1.png" id="1_yjc8n"]
+[ext_resource type="Texture2D" uid="uid://bbvr7h2vfn3aw" path="res://assets/buildings/turret-rocket/2.png" id="2_2ul7v"]
+[ext_resource type="Texture2D" uid="uid://b0i2cw0tp137v" path="res://assets/buildings/turret-rocket/3.png" id="3_p6bcl"]
+[ext_resource type="Texture2D" uid="uid://bm8s6dmw1v3gk" path="res://assets/fx/explosion/1.png" id="5_kdi2f"]
+[ext_resource type="Texture2D" uid="uid://by110ii254ixh" path="res://assets/fx/explosion/2.png" id="6_qgqip"]
+[ext_resource type="Texture2D" uid="uid://dn3tvfwj5ql11" path="res://assets/fx/explosion/3.png" id="7_3tpkk"]
+[ext_resource type="Texture2D" uid="uid://cu3fipb0r4j7q" path="res://assets/fx/explosion/4.png" id="8_7yv35"]
+[ext_resource type="Texture2D" uid="uid://phcvlr3aalbc" path="res://assets/fx/explosion/5.png" id="9_c1jrl"]
+[ext_resource type="Texture2D" uid="uid://bsqhgwbxrtal7" path="res://assets/fx/explosion/6.png" id="10_g7goj"]
+[ext_resource type="Texture2D" uid="uid://3m8vmqwf6l54" path="res://assets/fx/explosion/8.png" id="11_f6fff"]
+[ext_resource type="Texture2D" uid="uid://b7jfbne3sawnh" path="res://assets/fx/explosion/9.png" id="12_2u2kr"]
+
+[sub_resource type="Animation" id="Animation_utfg3"]
+resource_name = "explode"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_kdi2f"), ExtResource("6_qgqip"), ExtResource("7_3tpkk"), ExtResource("8_7yv35"), ExtResource("9_c1jrl"), ExtResource("10_g7goj"), ExtResource("1_hh65e"), ExtResource("11_f6fff"), ExtResource("12_2u2kr")]
+}
+
+[sub_resource type="Animation" id="Animation_p1k0e"]
+resource_name = "rocket"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_yjc8n"), ExtResource("2_2ul7v"), ExtResource("3_p6bcl")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gnskr"]
+_data = {
+"explode": SubResource("Animation_utfg3"),
+"rocket": SubResource("Animation_p1k0e")
+}
+
+[node name="Animations" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("5_kdi2f")
+
+[node name="BulletAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gnskr")
+}

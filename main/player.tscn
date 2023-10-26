@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnf3wusaobueh"]
+
+[ext_resource type="PackedScene" uid="uid://b2krfrm4mk2k6" path="res://main/player_animations.tscn" id="1_hdbwd"]
+[ext_resource type="Script" path="res://main/player_control.gd" id="1_x0gdd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyhbm"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_feq5h"]
+
+[node name="PlayerControl" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_x0gdd")
+
+[node name="Animations" parent="." instance=ExtResource("1_hdbwd")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_gyhbm")
+
+[node name="Gun" type="Marker2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Gun"]
+position = Vector2(1, 4.76837e-07)
+rotation = 1.5708
+mesh = SubResource("CapsuleMesh_feq5h")

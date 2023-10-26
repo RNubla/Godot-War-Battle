@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://l8tkuayl0bcl"]
+
+[ext_resource type="Script" path="res://main/bullet.gd" id="1_ro4wc"]
+[ext_resource type="PackedScene" uid="uid://clem18i70wdpp" path="res://main/bullet_animation.tscn" id="1_y10lw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6vxi"]
+radius = 3.0
+height = 18.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_ro4wc")
+life = 0.5
+bullet_speed = 250
+
+[node name="Animations" parent="." instance=ExtResource("1_y10lw")]
+scale = Vector2(-1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u6vxi")
