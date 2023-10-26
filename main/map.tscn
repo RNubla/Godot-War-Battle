@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cma0xy5kksj4t"]
+[gd_scene load_steps=6 format=3 uid="uid://cma0xy5kksj4t"]
 
 [ext_resource type="Texture2D" uid="uid://b13h1284oehnv" path="res://assets/map.png" id="1_6d5ml"]
 [ext_resource type="PackedScene" uid="uid://cnf3wusaobueh" path="res://main/player.tscn" id="2_bkaxc"]
-[ext_resource type="PackedScene" uid="uid://l8tkuayl0bcl" path="res://main/bullet.tscn" id="3_ubnoj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jfmv"]
 
@@ -377,4 +376,3 @@ layer_0/tile_data = PackedInt32Array(0, 262145, 1, 65536, 262145, 1, 1, 327681, 
 
 [node name="Player" parent="." instance=ExtResource("2_bkaxc")]
 position = Vector2(103, 125)
-Bullet = ExtResource("3_ubnoj")

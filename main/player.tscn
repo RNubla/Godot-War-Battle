@@ -2,16 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://b2krfrm4mk2k6" path="res://main/player_animations.tscn" id="1_hdbwd"]
 [ext_resource type="Script" path="res://main/player_control.gd" id="1_x0gdd"]
+[ext_resource type="PackedScene" uid="uid://l8tkuayl0bcl" path="res://main/bullet.tscn" id="2_7tcm4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyhbm"]
 radius = 5.0
 height = 20.0
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_feq5h"]
-
-[node name="PlayerControl" type="CharacterBody2D"]
+[node name="PlayerControl" type="CharacterBody2D" node_paths=PackedStringArray("abilities")]
 texture_filter = 1
 script = ExtResource("1_x0gdd")
+Bullet = ExtResource("2_7tcm4")
+abilities = [NodePath("")]
 
 [node name="Animations" parent="." instance=ExtResource("1_hdbwd")]
 
@@ -22,8 +23,3 @@ zoom = Vector2(2.5, 2.5)
 shape = SubResource("CapsuleShape2D_gyhbm")
 
 [node name="Gun" type="Marker2D" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Gun"]
-position = Vector2(1, 4.76837e-07)
-rotation = 1.5708
-mesh = SubResource("CapsuleMesh_feq5h")

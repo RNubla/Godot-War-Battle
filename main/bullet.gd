@@ -20,7 +20,7 @@ func _ready():
 	#needs to add timer as child to bullet in order for it to function
 	add_child(timer)
 	timer.start()
-	timer.connect("timeout",explode, 1)
+	timer.connect("timeout",explode, 0)
 	
 func _physics_process(delta):
 	position += transform.x * bullet_speed * delta

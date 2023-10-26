@@ -6,10 +6,15 @@ var direction:Vector2 = Vector2()
 @export var speed:float = 50
 @export var Bullet: PackedScene = null
 
+@export var abilities:Array[Node] = []
+
 var gun:Marker2D = null
 
 func _ready():
 	gun = $Gun
+#	for ability in abilities:
+#		self.add_child(ability)
+		
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -28,9 +33,12 @@ func _physics_process(delta) -> void:
 		velocity.x += 1
 	if Input.is_action_pressed("down"):
 		velocity.y += 1
+	if Input.is_action_pressed("sprint"):
+		velocity = velocity.normalized() * speed * 1.5
+	else:
+		velocity = velocity.normalized() * speed
 	
 
-	velocity = velocity.normalized() * speed
 	move_and_slide()
 
 func shoot():
